@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FF312A9E-4008-42D9-A41C-C34CE4D7687B}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Changelog.md = Changelog.md
+		Readme.md = Readme.md
+		Build\Build.Configuration.cs = Build\Build.Configuration.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Automation", "Automation", "{EC5BB2EF-87F8-436C-8461-0A05957E5852}"
+EndProject
+Project("{B4689791-5C36-41AB-B907-196748189609}") = "Build", "build\Build.csproj", "{FA7FEBAA-1791-4B7A-92F5-621CDCBC064F}"
+EndProject
+Project("{B4689791-5C36-41AB-B907-196748189609}") = "Installer", "install\Installer.csproj", "{E5FFF395-2686-4F78-8AAF-A13AB7F4369A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sonny.RevitExtensions", "source\Sonny.RevitExtensions\Sonny.RevitExtensions.csproj", "{798D00C5-596B-4F15-BA63-35062B84E424}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug R21|Any CPU = Debug R21|Any CPU
+		Debug R22|Any CPU = Debug R22|Any CPU
+		Debug R23|Any CPU = Debug R23|Any CPU
+		Debug R24|Any CPU = Debug R24|Any CPU
+		Debug R25|Any CPU = Debug R25|Any CPU
+		Debug R26|Any CPU = Debug R26|Any CPU
+		Release R21|Any CPU = Release R21|Any CPU
+		Release R22|Any CPU = Release R22|Any CPU
+		Release R23|Any CPU = Release R23|Any CPU
+		Release R24|Any CPU = Release R24|Any CPU
+		Release R25|Any CPU = Release R25|Any CPU
+		Release R26|Any CPU = Release R26|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA7FEBAA-1791-4B7A-92F5-621CDCBC064F}.Debug R21|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA7FEBAA-1791-4B7A-92F5-621CDCBC064F}.Debug R22|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA7FEBAA-1791-4B7A-92F5-621CDCBC064F}.Debug R23|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA7FEBAA-1791-4B7A-92F5-621CDCBC064F}.Debug R24|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA7FEBAA-1791-4B7A-92F5-621CDCBC064F}.Debug R25|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA7FEBAA-1791-4B7A-92F5-621CDCBC064F}.Debug R26|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA7FEBAA-1791-4B7A-92F5-621CDCBC064F}.Release R21|Any CPU.ActiveCfg = Release|Any CPU
+		{FA7FEBAA-1791-4B7A-92F5-621CDCBC064F}.Release R22|Any CPU.ActiveCfg = Release|Any CPU
+		{FA7FEBAA-1791-4B7A-92F5-621CDCBC064F}.Release R23|Any CPU.ActiveCfg = Release|Any CPU
+		{FA7FEBAA-1791-4B7A-92F5-621CDCBC064F}.Release R24|Any CPU.ActiveCfg = Release|Any CPU
+		{FA7FEBAA-1791-4B7A-92F5-621CDCBC064F}.Release R25|Any CPU.ActiveCfg = Release|Any CPU
+		{FA7FEBAA-1791-4B7A-92F5-621CDCBC064F}.Release R26|Any CPU.ActiveCfg = Release|Any CPU
+		{E5FFF395-2686-4F78-8AAF-A13AB7F4369A}.Debug R21|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5FFF395-2686-4F78-8AAF-A13AB7F4369A}.Debug R22|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5FFF395-2686-4F78-8AAF-A13AB7F4369A}.Debug R23|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5FFF395-2686-4F78-8AAF-A13AB7F4369A}.Debug R24|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5FFF395-2686-4F78-8AAF-A13AB7F4369A}.Debug R25|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5FFF395-2686-4F78-8AAF-A13AB7F4369A}.Debug R26|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5FFF395-2686-4F78-8AAF-A13AB7F4369A}.Release R21|Any CPU.ActiveCfg = Release|Any CPU
+		{E5FFF395-2686-4F78-8AAF-A13AB7F4369A}.Release R22|Any CPU.ActiveCfg = Release|Any CPU
+		{E5FFF395-2686-4F78-8AAF-A13AB7F4369A}.Release R23|Any CPU.ActiveCfg = Release|Any CPU
+		{E5FFF395-2686-4F78-8AAF-A13AB7F4369A}.Release R24|Any CPU.ActiveCfg = Release|Any CPU
+		{E5FFF395-2686-4F78-8AAF-A13AB7F4369A}.Release R25|Any CPU.ActiveCfg = Release|Any CPU
+		{E5FFF395-2686-4F78-8AAF-A13AB7F4369A}.Release R26|Any CPU.ActiveCfg = Release|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Debug R21|Any CPU.ActiveCfg = Debug R21|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Debug R21|Any CPU.Build.0 = Debug R21|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Debug R22|Any CPU.ActiveCfg = Debug R22|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Debug R22|Any CPU.Build.0 = Debug R22|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Debug R23|Any CPU.ActiveCfg = Debug R23|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Debug R23|Any CPU.Build.0 = Debug R23|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Debug R24|Any CPU.ActiveCfg = Debug R24|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Debug R24|Any CPU.Build.0 = Debug R24|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Debug R25|Any CPU.ActiveCfg = Debug R25|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Debug R25|Any CPU.Build.0 = Debug R25|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Debug R26|Any CPU.ActiveCfg = Debug R26|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Debug R26|Any CPU.Build.0 = Debug R26|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Release R21|Any CPU.ActiveCfg = Release R21|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Release R21|Any CPU.Build.0 = Release R21|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Release R22|Any CPU.ActiveCfg = Release R22|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Release R22|Any CPU.Build.0 = Release R22|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Release R23|Any CPU.ActiveCfg = Release R23|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Release R23|Any CPU.Build.0 = Release R23|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Release R24|Any CPU.ActiveCfg = Release R24|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Release R24|Any CPU.Build.0 = Release R24|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Release R25|Any CPU.ActiveCfg = Release R25|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Release R25|Any CPU.Build.0 = Release R25|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Release R26|Any CPU.ActiveCfg = Release R26|Any CPU
+		{798D00C5-596B-4F15-BA63-35062B84E424}.Release R26|Any CPU.Build.0 = Release R26|Any CPU
+	EndGlobalSection
+		GlobalSection(NestedProjects) = preSolution
+						{FA7FEBAA-1791-4B7A-92F5-621CDCBC064F} = {EC5BB2EF-87F8-436C-8461-0A05957E5852}
+						{E5FFF395-2686-4F78-8AAF-A13AB7F4369A} = {EC5BB2EF-87F8-436C-8461-0A05957E5852}
+		EndGlobalSection
+EndGlobal
