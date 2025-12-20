@@ -3,9 +3,6 @@
 
 namespace Sonny.RevitExtensions.Extensions.Families ;
 
-/// <summary>
-/// Provides extension methods for <see cref="T:Autodesk.Revit.DB.Family"/> objects in Revit API.
-/// </summary>
 public static class FamilyExtensions
 {
     /// <summary>
