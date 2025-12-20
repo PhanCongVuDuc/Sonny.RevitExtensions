@@ -42,4 +42,23 @@ public static class LinqExtensions
             keySelector) ;
 #endif
     }
+
+    /// <summary>
+    ///     Filters out null elements from a sequence, returning only non-null elements.
+    /// </summary>
+    /// <typeparam name="TElement">The type of the elements in the collection. Must be a reference type.</typeparam>
+    /// <param name="col">The sequence that may contain null elements.</param>
+    /// <returns>An IEnumerable that contains only non-null elements from the source sequence.</returns>
+    public static IEnumerable<TElement> NonNull<TElement>(this IEnumerable<TElement?> col) where TElement : class
+    {
+        foreach (var element in col)
+        {
+            if (element == null)
+            {
+                continue ;
+            }
+
+            yield return element ;
+        }
+    }
 }
