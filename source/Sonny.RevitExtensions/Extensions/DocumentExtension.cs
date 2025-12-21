@@ -42,6 +42,17 @@ public static class DocumentExtension
         ElementId.InvalidElementId == elementId ? null : document.GetElement(elementId) as TElement ;
 
     /// <summary>
+    ///     Gets an element by its reference
+    /// </summary>
+    /// <typeparam name="TElement">The type of element to retrieve</typeparam>
+    /// <param name="document">The document</param>
+    /// <param name="reference">The reference</param>
+    /// <returns>The element, or null if not found or invalid</returns>
+    public static TElement? GetElementById<TElement>(this Document document,
+        Reference reference) where TElement : Element =>
+        document.GetElement(reference) as TElement ;
+
+    /// <summary>
     ///     Gets all elements of the specified type in the document
     /// </summary>
     /// <typeparam name="TElement">The type of element to retrieve</typeparam>
