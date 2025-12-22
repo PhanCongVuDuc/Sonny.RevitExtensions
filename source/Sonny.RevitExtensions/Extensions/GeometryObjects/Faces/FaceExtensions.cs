@@ -17,8 +17,7 @@ public static class FaceExtensions
         var intersectionResult = face.Project(point) ;
 
         // intersectionResult== null lí do là điểm XYZ không nằm trong không gian face
-        if (intersectionResult == null)
-        {
+        if (intersectionResult == null) {
             return false ;
         }
 
@@ -37,20 +36,17 @@ public static class FaceExtensions
         var faceIntersectionFaceResult = face1.Intersect(face2,
             out var curve) ;
 
-        if (faceIntersectionFaceResult == FaceIntersectionFaceResult.NonIntersecting)
-        {
+        if (faceIntersectionFaceResult == FaceIntersectionFaceResult.NonIntersecting) {
             yield break ;
         }
 
         IList<XYZ>? list = curve.Tessellate() ;
 
-        foreach (var xyz in list)
-        {
+        foreach (var xyz in list) {
             var pointInsideInFace1 = face1.IsPointInside(xyz) ;
             var pointInsideInFace2 = face2.IsPointInside(xyz) ;
 
-            if (pointInsideInFace1 && pointInsideInFace2)
-            {
+            if (pointInsideInFace1 && pointInsideInFace2) {
                 yield return xyz ;
             }
         }
@@ -88,13 +84,11 @@ public static class FaceExtensions
         var comparisonResult = face.Intersect(line,
             out var results) ;
 
-        if (comparisonResult != SetComparisonResult.Overlap)
-        {
+        if (comparisonResult != SetComparisonResult.Overlap) {
             yield break ;
         }
 
-        for (var i = 0; i < results.Size; i++)
-        {
+        for (var i = 0; i < results.Size; i++) {
             var intersectionResult = results.get_Item(i) ;
             yield return intersectionResult.XYZPoint ;
         }
@@ -117,8 +111,7 @@ public static class FaceExtensions
     /// <returns>The normal vector. For PlanarFace, returns FaceNormal. For other faces, computes normal at the center point.</returns>
     public static XYZ GetNormal(this Face face)
     {
-        if (face is PlanarFace planar)
-        {
+        if (face is PlanarFace planar) {
             return planar.FaceNormal ;
         }
 
@@ -145,30 +138,24 @@ public static class FaceExtensions
         var uv = xyz / 2 ;
 
         XYZ? result = null ;
-        if (face.IsInside(uv))
-        {
+        if (face.IsInside(uv)) {
             result = face.Evaluate(uv) ;
         }
-        else
-        {
+        else {
             UV? uvTempFar ;
-            if (boundingBoxMax.DistanceTo(UV.Zero) > boundingBoxMin.DistanceTo(UV.Zero))
-            {
+            if (boundingBoxMax.DistanceTo(UV.Zero) > boundingBoxMin.DistanceTo(UV.Zero)) {
                 uvTempFar = boundingBoxMax ;
             }
-            else
-            {
+            else {
                 uvTempFar = boundingBoxMin ;
             }
 
-            for (var i = 1; i < 99; i++)
-            {
+            for (var i = 1; i < 99; i++) {
                 var temp = i / 100d ;
 
                 UV tempUv = new(uvTempFar.U * temp,
                     uvTempFar.V * temp) ;
-                if (face.IsInside(tempUv))
-                {
+                if (face.IsInside(tempUv)) {
                     result = face.Evaluate(tempUv) ;
                     break ;
                 }
@@ -208,8 +195,7 @@ public static class FaceExtensions
             out var results) ;
 
         if (result != SetComparisonResult.Overlap
-            || results is not { Size: 1 })
-        {
+            || results is not { Size: 1 }) {
             return null ;
         }
 

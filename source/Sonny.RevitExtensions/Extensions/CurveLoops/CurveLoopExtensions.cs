@@ -13,11 +13,9 @@ public static class CurveLoopExtensions
     public static IEnumerable<Curve> GetCurves(this CurveLoop curveLoop)
     {
         var curveLoopIterator = curveLoop.GetCurveLoopIterator() ;
-        while (curveLoopIterator.MoveNext())
-        {
+        while (curveLoopIterator.MoveNext()) {
             var curve = curveLoopIterator.Current ;
-            if (curve == null)
-            {
+            if (curve == null) {
                 continue ;
             }
 

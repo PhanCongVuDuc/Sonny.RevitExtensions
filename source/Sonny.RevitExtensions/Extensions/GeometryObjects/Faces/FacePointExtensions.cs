@@ -12,10 +12,8 @@ public static class FacePointExtensions
     /// <returns>Collection of XYZ points from tessellating all curves of the face</returns>
     public static IEnumerable<XYZ> GetPoints(this Face face)
     {
-        foreach (var curve in face.GetCurves())
-        {
-            foreach (var point in curve.Tessellate())
-            {
+        foreach (var curve in face.GetCurves()) {
+            foreach (var point in curve.Tessellate()) {
                 yield return point ;
             }
         }

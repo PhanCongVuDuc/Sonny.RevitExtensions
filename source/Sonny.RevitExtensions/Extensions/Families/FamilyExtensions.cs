@@ -16,8 +16,7 @@ public static class FamilyExtensions
     /// </remarks>
     public static IEnumerable<FamilySymbol> GetFamilySymbols(this Family family)
     {
-        foreach (var familySymbolId in family.GetFamilySymbolIds())
-        {
+        foreach (var familySymbolId in family.GetFamilySymbolIds()) {
             yield return family.Document.GetElementById<FamilySymbol>(familySymbolId)! ;
         }
     }

@@ -9,8 +9,7 @@ public static class ElementParameterExtensions
     private static IEnumerable<Definition> GetDefinitions(DefinitionBindingMap bindings)
     {
         using var it = bindings.ForwardIterator() ;
-        while (it.MoveNext())
-        {
+        while (it.MoveNext()) {
             yield return it.Key ;
         }
     }
@@ -19,8 +18,7 @@ public static class ElementParameterExtensions
         BuiltInParameter builtInParameter)
     {
         var parameter = elm.get_Parameter(builtInParameter) ;
-        if (parameter == null)
-        {
+        if (parameter == null) {
             return ;
         }
 
@@ -31,8 +29,7 @@ public static class ElementParameterExtensions
         string parameterName)
     {
         var parameter = elm.LookupParameter(parameterName) ;
-        if (parameter == null)
-        {
+        if (parameter == null) {
             return ;
         }
 
@@ -43,8 +40,7 @@ public static class ElementParameterExtensions
         Guid guid)
     {
         var parameter = elm.get_Parameter(guid) ;
-        if (parameter == null)
-        {
+        if (parameter == null) {
             return ;
         }
 
@@ -53,25 +49,20 @@ public static class ElementParameterExtensions
 
     public static void ClearParam(this Parameter parameter)
     {
-        if (parameter.IsReadOnly)
-        {
+        if (parameter.IsReadOnly) {
             throw new InvalidOperationException($"Cannot write parameter {parameter.Definition.Name}.") ;
         }
 
-        try
-        {
+        try {
             if (parameter.IsShared
-                && parameter.ClearValue())
-            {
+                && parameter.ClearValue()) {
                 return ;
             }
         }
-        catch (InvalidObjectException ex)
-        {
+        catch (InvalidObjectException ex) {
         }
 
-        switch (parameter.StorageType)
-        {
+        switch (parameter.StorageType) {
             case StorageType.None :
                 break ;
             case StorageType.Integer :
@@ -96,8 +87,7 @@ public static class ElementParameterExtensions
         bool value)
     {
         if (! elm.TrySetParam(builtInParameter,
-                value))
-        {
+                value)) {
             throw new InvalidOperationException(
                 $"Parameter {typeof( BuiltInParameter ).FullName}.{builtInParameter} is not found.") ;
         }
@@ -108,8 +98,7 @@ public static class ElementParameterExtensions
         bool value)
     {
         if (! elm.TrySetParam(parameterName,
-                value))
-        {
+                value)) {
             throw new InvalidOperationException($"Parameter {parameterName} is not found.") ;
         }
     }
@@ -119,8 +108,7 @@ public static class ElementParameterExtensions
         bool value)
     {
         if (! elm.TrySetParam(guid,
-                value))
-        {
+                value)) {
             throw new InvalidOperationException($"Parameter {guid} is not found.") ;
         }
     }
@@ -130,8 +118,7 @@ public static class ElementParameterExtensions
         int value)
     {
         if (! elm.TrySetParam(builtInParameter,
-                value))
-        {
+                value)) {
             throw new InvalidOperationException(
                 $"Parameter {typeof( BuiltInParameter ).FullName}.{builtInParameter} is not found.") ;
         }
@@ -142,8 +129,7 @@ public static class ElementParameterExtensions
         int value)
     {
         if (! elm.TrySetParam(parameterName,
-                value))
-        {
+                value)) {
             throw new InvalidOperationException($"Parameter {parameterName} is not found.") ;
         }
     }
@@ -153,8 +139,7 @@ public static class ElementParameterExtensions
         int value)
     {
         if (! elm.TrySetParam(guid,
-                value))
-        {
+                value)) {
             throw new InvalidOperationException($"Parameter {guid} is not found.") ;
         }
     }
@@ -164,8 +149,7 @@ public static class ElementParameterExtensions
         double value)
     {
         if (! elm.TrySetParam(builtInParameter,
-                value))
-        {
+                value)) {
             throw new InvalidOperationException(
                 $"Parameter {typeof( BuiltInParameter ).FullName}.{builtInParameter} is not found.") ;
         }
@@ -176,8 +160,7 @@ public static class ElementParameterExtensions
         double value)
     {
         if (! elm.TrySetParam(parameterName,
-                value))
-        {
+                value)) {
             throw new InvalidOperationException($"Parameter {parameterName} is not found.") ;
         }
     }
@@ -187,8 +170,7 @@ public static class ElementParameterExtensions
         double value)
     {
         if (! elm.TrySetParam(guid,
-                value))
-        {
+                value)) {
             throw new InvalidOperationException($"Parameter {guid} is not found.") ;
         }
     }
@@ -198,8 +180,7 @@ public static class ElementParameterExtensions
         string value)
     {
         if (! elm.TrySetParam(builtInParameter,
-                value))
-        {
+                value)) {
             throw new InvalidOperationException(
                 $"Parameter {typeof( BuiltInParameter ).FullName}.{builtInParameter} is not found.") ;
         }
@@ -210,8 +191,7 @@ public static class ElementParameterExtensions
         string value)
     {
         if (! elm.TrySetParam(parameterName,
-                value))
-        {
+                value)) {
             throw new InvalidOperationException($"Parameter {parameterName} is not found.") ;
         }
     }
@@ -221,8 +201,7 @@ public static class ElementParameterExtensions
         string value)
     {
         if (! elm.TrySetParam(guid,
-                value))
-        {
+                value)) {
             throw new InvalidOperationException($"Parameter {guid} is not found.") ;
         }
     }
@@ -233,8 +212,7 @@ public static class ElementParameterExtensions
         ElementId value)
     {
         if (! elm.TrySetParam(builtInParameter,
-                value))
-        {
+                value)) {
             throw new InvalidOperationException(
                 $"Parameter {typeof( BuiltInParameter ).FullName}.{builtInParameter} is not found.") ;
         }
@@ -245,8 +223,7 @@ public static class ElementParameterExtensions
         ElementId value)
     {
         if (! elm.TrySetParam(parameterName,
-                value))
-        {
+                value)) {
             throw new InvalidOperationException($"Parameter {parameterName} is not found.") ;
         }
     }
@@ -256,8 +233,7 @@ public static class ElementParameterExtensions
         ElementId value)
     {
         if (! elm.TrySetParam(guid,
-                value))
-        {
+                value)) {
             throw new InvalidOperationException($"Parameter {guid} is not found.") ;
         }
     }
@@ -267,8 +243,7 @@ public static class ElementParameterExtensions
         Element? value)
     {
         if (! elm.TrySetParam(builtInParameter,
-                value))
-        {
+                value)) {
             throw new InvalidOperationException(
                 $"Parameter {typeof( BuiltInParameter ).FullName}.{builtInParameter} is not found.") ;
         }
@@ -279,8 +254,7 @@ public static class ElementParameterExtensions
         Element? value)
     {
         if (! elm.TrySetParam(parameterName,
-                value))
-        {
+                value)) {
             throw new InvalidOperationException($"Parameter {parameterName} is not found.") ;
         }
     }
@@ -290,8 +264,7 @@ public static class ElementParameterExtensions
         Element? value)
     {
         if (! elm.TrySetParam(guid,
-                value))
-        {
+                value)) {
             throw new InvalidOperationException($"Parameter {guid} is not found.") ;
         }
     }
@@ -324,8 +297,7 @@ public static class ElementParameterExtensions
         bool value)
     {
         if (parameter.IsReadOnly
-            || StorageType.Integer != parameter.StorageType)
-        {
+            || StorageType.Integer != parameter.StorageType) {
             return false ;
         }
 
@@ -360,19 +332,16 @@ public static class ElementParameterExtensions
     private static bool TrySetParam(this Parameter parameter,
         int value)
     {
-        if (parameter.IsReadOnly)
-        {
+        if (parameter.IsReadOnly) {
             return false ;
         }
 
-        if (StorageType.Double == parameter.StorageType)
-        {
+        if (StorageType.Double == parameter.StorageType) {
             parameter.Set((double)value) ;
             return true ;
         }
 
-        if (StorageType.Integer != parameter.StorageType)
-        {
+        if (StorageType.Integer != parameter.StorageType) {
             return false ;
         }
 
@@ -408,8 +377,7 @@ public static class ElementParameterExtensions
         double value)
     {
         if (parameter.IsReadOnly
-            || StorageType.Double != parameter.StorageType)
-        {
+            || StorageType.Double != parameter.StorageType) {
             return false ;
         }
 
@@ -445,8 +413,7 @@ public static class ElementParameterExtensions
         string value)
     {
         if (parameter.IsReadOnly
-            || StorageType.String != parameter.StorageType)
-        {
+            || StorageType.String != parameter.StorageType) {
             return false ;
         }
 
@@ -482,8 +449,7 @@ public static class ElementParameterExtensions
         ElementId value)
     {
         if (parameter.IsReadOnly
-            || StorageType.ElementId != parameter.StorageType)
-        {
+            || StorageType.ElementId != parameter.StorageType) {
             return false ;
         }
 
@@ -518,13 +484,11 @@ public static class ElementParameterExtensions
     private static bool TrySetParam(this Parameter parameter,
         Element? value)
     {
-        if (parameter.IsReadOnly)
-        {
+        if (parameter.IsReadOnly) {
             return false ;
         }
 
-        if (StorageType.ElementId == parameter.StorageType)
-        {
+        if (StorageType.ElementId == parameter.StorageType) {
             // value.GetValidId()
             // parameter.Set(value.GetValidId()) ;
             parameter.Set(value.Id) ;
@@ -532,8 +496,7 @@ public static class ElementParameterExtensions
             return true ;
         }
 
-        if (StorageType.String != parameter.StorageType)
-        {
+        if (StorageType.String != parameter.StorageType) {
             return false ;
         }
 
@@ -546,8 +509,7 @@ public static class ElementParameterExtensions
     {
         bool propertyBool ;
         if (! elm.TryGetParam(builtInParameter,
-                out propertyBool))
-        {
+                out propertyBool)) {
             throw new InvalidOperationException() ;
         }
 
@@ -559,8 +521,7 @@ public static class ElementParameterExtensions
     {
         bool propertyBool ;
         if (! elm.TryGetParam(parameterName,
-                out propertyBool))
-        {
+                out propertyBool)) {
             throw new InvalidOperationException() ;
         }
 
@@ -572,8 +533,7 @@ public static class ElementParameterExtensions
     {
         bool propertyBool ;
         if (! elm.TryGetParam(guid,
-                out propertyBool))
-        {
+                out propertyBool)) {
             throw new InvalidOperationException() ;
         }
 
@@ -585,8 +545,7 @@ public static class ElementParameterExtensions
     {
         int propertyInt ;
         if (! elm.TryGetParam(builtInParameter,
-                out propertyInt))
-        {
+                out propertyInt)) {
             throw new InvalidOperationException() ;
         }
 
@@ -598,8 +557,7 @@ public static class ElementParameterExtensions
     {
         int propertyInt ;
         if (! elm.TryGetParam(parameterName,
-                out propertyInt))
-        {
+                out propertyInt)) {
             throw new InvalidOperationException() ;
         }
 
@@ -611,8 +569,7 @@ public static class ElementParameterExtensions
     {
         int propertyInt ;
         if (! elm.TryGetParam(guid,
-                out propertyInt))
-        {
+                out propertyInt)) {
             throw new InvalidOperationException() ;
         }
 
@@ -624,8 +581,7 @@ public static class ElementParameterExtensions
     {
         double propertyDouble ;
         if (! elm.TryGetParam(builtInParameter,
-                out propertyDouble))
-        {
+                out propertyDouble)) {
             throw new InvalidOperationException() ;
         }
 
@@ -637,8 +593,7 @@ public static class ElementParameterExtensions
     {
         double propertyDouble ;
         if (! elm.TryGetParam(parameterName,
-                out propertyDouble))
-        {
+                out propertyDouble)) {
             throw new InvalidOperationException() ;
         }
 
@@ -650,8 +605,7 @@ public static class ElementParameterExtensions
     {
         double propertyDouble ;
         if (! elm.TryGetParam(guid,
-                out propertyDouble))
-        {
+                out propertyDouble)) {
             throw new InvalidOperationException() ;
         }
 
@@ -663,8 +617,7 @@ public static class ElementParameterExtensions
     {
         string propertyString ;
         if (! elm.TryGetParam(builtInParameter,
-                out propertyString))
-        {
+                out propertyString)) {
             throw new InvalidOperationException() ;
         }
 
@@ -676,8 +629,7 @@ public static class ElementParameterExtensions
     {
         string propertyString ;
         if (! elm.TryGetParam(parameterName,
-                out propertyString))
-        {
+                out propertyString)) {
             throw new InvalidOperationException() ;
         }
 
@@ -689,8 +641,7 @@ public static class ElementParameterExtensions
     {
         string propertyString ;
         if (! elm.TryGetParam(guid,
-                out propertyString))
-        {
+                out propertyString)) {
             throw new InvalidOperationException() ;
         }
 
@@ -702,8 +653,7 @@ public static class ElementParameterExtensions
     {
         ElementId propertyElementId ;
         if (! elm.TryGetParam(builtInParameter,
-                out propertyElementId))
-        {
+                out propertyElementId)) {
             throw new InvalidOperationException() ;
         }
 
@@ -715,8 +665,7 @@ public static class ElementParameterExtensions
     {
         ElementId propertyElementId ;
         if (! elm.TryGetParam(parameterName,
-                out propertyElementId))
-        {
+                out propertyElementId)) {
             throw new InvalidOperationException() ;
         }
 
@@ -728,8 +677,7 @@ public static class ElementParameterExtensions
     {
         ElementId propertyElementId ;
         if (! elm.TryGetParam(guid,
-                out propertyElementId))
-        {
+                out propertyElementId)) {
             throw new InvalidOperationException() ;
         }
 
@@ -741,8 +689,7 @@ public static class ElementParameterExtensions
     {
         Element propertyElement ;
         if (! elm.TryGetParam(builtInParameter,
-                out propertyElement))
-        {
+                out propertyElement)) {
             throw new InvalidOperationException() ;
         }
 
@@ -754,8 +701,7 @@ public static class ElementParameterExtensions
     {
         Element propertyElement ;
         if (! elm.TryGetParam(parameterName,
-                out propertyElement))
-        {
+                out propertyElement)) {
             throw new InvalidOperationException() ;
         }
 
@@ -767,8 +713,7 @@ public static class ElementParameterExtensions
     {
         Element propertyElement ;
         if (! elm.TryGetParam(guid,
-                out propertyElement))
-        {
+                out propertyElement)) {
             throw new InvalidOperationException() ;
         }
 
@@ -780,8 +725,7 @@ public static class ElementParameterExtensions
     {
         TElement propertyElement ;
         if (! elm.TryGetParam(builtInParameter,
-                out propertyElement))
-        {
+                out propertyElement)) {
             throw new InvalidOperationException() ;
         }
 
@@ -793,8 +737,7 @@ public static class ElementParameterExtensions
     {
         TElement propertyElement ;
         if (! elm.TryGetParam(parameterName,
-                out propertyElement))
-        {
+                out propertyElement)) {
             throw new InvalidOperationException() ;
         }
 
@@ -806,8 +749,7 @@ public static class ElementParameterExtensions
     {
         TElement propertyElement ;
         if (! elm.TryGetParam(guid,
-                out propertyElement))
-        {
+                out propertyElement)) {
             throw new InvalidOperationException() ;
         }
 
@@ -821,8 +763,7 @@ public static class ElementParameterExtensions
         value = false ;
         int num ;
         if (! elm.TryGetParam(builtInParameter,
-                out num))
-        {
+                out num)) {
             return false ;
         }
 
@@ -837,8 +778,7 @@ public static class ElementParameterExtensions
         value = false ;
         int num ;
         if (! elm.TryGetParam(parameterName,
-                out num))
-        {
+                out num)) {
             return false ;
         }
 
@@ -853,8 +793,7 @@ public static class ElementParameterExtensions
         value = false ;
         int num ;
         if (! elm.TryGetParam(guid,
-                out num))
-        {
+                out num)) {
             return false ;
         }
 
@@ -894,8 +833,7 @@ public static class ElementParameterExtensions
         out int value)
     {
         value = 0 ;
-        if (parameter.StorageType != StorageType.Integer)
-        {
+        if (parameter.StorageType != StorageType.Integer) {
             return false ;
         }
 
@@ -935,8 +873,7 @@ public static class ElementParameterExtensions
         out double value)
     {
         value = 0.0 ;
-        switch (parameter.StorageType)
-        {
+        switch (parameter.StorageType) {
             case StorageType.Integer :
                 value = parameter.AsInteger() ;
                 return true ;
@@ -979,8 +916,7 @@ public static class ElementParameterExtensions
         out string? value)
     {
         value = null ;
-        if (parameter.StorageType != StorageType.String)
-        {
+        if (parameter.StorageType != StorageType.String) {
             return false ;
         }
 
@@ -1019,8 +955,7 @@ public static class ElementParameterExtensions
         out ElementId value)
     {
         value = ElementId.InvalidElementId ;
-        if (parameter.StorageType != StorageType.ElementId)
-        {
+        if (parameter.StorageType != StorageType.ElementId) {
             return false ;
         }
 
@@ -1060,8 +995,7 @@ public static class ElementParameterExtensions
         out TElement? value) where TElement : Element
     {
         value = default ;
-        switch (parameter.StorageType)
-        {
+        switch (parameter.StorageType) {
             case StorageType.String :
                 value = parameter.Element.Document.GetElementById<TElement>(parameter.AsString()) ;
                 return true ;

@@ -10,15 +10,13 @@ public class CreateElement
         DimensionType? dimensionType = null,
         double? minimumValue = null)
     {
-        if (dimensionType != null)
-        {
+        if (dimensionType != null) {
             var newDimension = view.Document.Create.NewDimension(view,
                 line,
                 references,
                 dimensionType) ;
 
-            if (minimumValue != null)
-            {
+            if (minimumValue != null) {
                 var removeDimension = newDimension.RemoveDimension(line,
                     view,
                     (double)minimumValue,
@@ -38,8 +36,7 @@ public class CreateElement
             line,
             references) ;
 
-        if (minimumValue != null)
-        {
+        if (minimumValue != null) {
             var removeDimension2 = dimension2.RemoveDimension(line,
                 view,
                 (double)minimumValue,

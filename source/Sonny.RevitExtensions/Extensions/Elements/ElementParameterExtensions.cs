@@ -17,23 +17,18 @@ public static class ElementParameterExtensions
     /// <returns>An enumerable collection of parameter names. Returns empty collection if element type is not found.</returns>
     public static IEnumerable<string> GetAllTypeParameters(this Element element)
     {
-        if (element is ElementType)
-        {
-            foreach (Parameter parameter in element.Parameters)
-            {
+        if (element is ElementType) {
+            foreach (Parameter parameter in element.Parameters) {
                 yield return parameter.Definition.Name ;
             }
         }
-        else
-        {
+        else {
             var elementType = element.Document.GetElement(element.GetTypeId()) ;
-            if (elementType == null)
-            {
+            if (elementType == null) {
                 yield break ;
             }
 
-            foreach (Parameter parameter in elementType.Parameters)
-            {
+            foreach (Parameter parameter in elementType.Parameters) {
                 yield return parameter.Definition.Name ;
             }
         }

@@ -15,8 +15,7 @@ public class ElementWrapperBase(Element element)
     public BoundingBoxXYZ? GetBoundingBoxXyz(ViewWrapperBase viewWrapper)
     {
         if (_boundingBoxXyz.TryGetValue(viewWrapper.View.UniqueId,
-                out var boundingBoxXyzValue))
-        {
+                out var boundingBoxXyzValue)) {
             return boundingBoxXyzValue ;
         }
 
@@ -29,28 +28,23 @@ public class ElementWrapperBase(Element element)
     public XYZ? GetCenterPoint(ViewWrapperBase viewWrapper)
     {
         if (_centerPoint.TryGetValue(viewWrapper.View.UniqueId,
-                out var pointValue))
-        {
+                out var pointValue)) {
             return pointValue ;
         }
 
         XYZ? result = null ;
 
-        if (viewWrapper.IsViewPlan)
-        {
-            if (Element.Location is LocationPoint locationPoint)
-            {
+        if (viewWrapper.IsViewPlan) {
+            if (Element.Location is LocationPoint locationPoint) {
                 result = locationPoint.Point ;
             }
-            else if (Element.Location is LocationCurve locationCurve)
-            {
+            else if (Element.Location is LocationCurve locationCurve) {
                 result = locationCurve.Curve.GetMiddlePoint() ;
             }
         }
 
         if (result == null
-            && GetBoundingBoxXyz(viewWrapper) is { } boundingBoxXyz)
-        {
+            && GetBoundingBoxXyz(viewWrapper) is { } boundingBoxXyz) {
             result = boundingBoxXyz.ComputeCentroid() ;
         }
 

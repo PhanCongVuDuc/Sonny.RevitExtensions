@@ -23,13 +23,11 @@ public static class LinqExtensions
     public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source,
         Func<TSource, TKey> keySelector)
     {
-        if (source == null)
-        {
+        if (source == null) {
             throw new ArgumentNullException(nameof( source )) ;
         }
 
-        if (keySelector == null)
-        {
+        if (keySelector == null) {
             throw new ArgumentNullException(nameof( keySelector )) ;
         }
 
@@ -51,10 +49,8 @@ public static class LinqExtensions
     /// <returns>An IEnumerable that contains only non-null elements from the source sequence.</returns>
     public static IEnumerable<TElement> NonNull<TElement>(this IEnumerable<TElement?> col) where TElement : class
     {
-        foreach (var element in col)
-        {
-            if (element == null)
-            {
+        foreach (var element in col) {
+            if (element == null) {
                 continue ;
             }
 

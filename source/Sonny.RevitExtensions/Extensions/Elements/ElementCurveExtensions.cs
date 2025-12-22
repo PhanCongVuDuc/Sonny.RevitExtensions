@@ -24,31 +24,24 @@ public static class ElementCurveExtensions
         // Get curves from solids
         foreach (var curve in element.GetSolids(options)
                      .GetFaces()
-                     .GetCurves())
-        {
+                     .GetCurves()) {
             yield return curve ;
         }
 
         // Get curves directly from geometry
         var geometryElement = element.GetGeometryElement(options) ;
-        if (geometryElement == null)
-        {
+        if (geometryElement == null) {
             yield break ;
         }
 
-        foreach (var geometryObject in geometryElement)
-        {
-            if (geometryObject is Curve curve)
-            {
+        foreach (var geometryObject in geometryElement) {
+            if (geometryObject is Curve curve) {
                 yield return curve ;
             }
-            else if (geometryObject is GeometryInstance geometryInstance)
-            {
+            else if (geometryObject is GeometryInstance geometryInstance) {
                 var instanceGeometry = geometryInstance.GetInstanceGeometry() ;
-                foreach (var geoObject in instanceGeometry)
-                {
-                    if (geoObject is not Curve instanceCurve)
-                    {
+                foreach (var geoObject in instanceGeometry) {
+                    if (geoObject is not Curve instanceCurve) {
                         continue ;
                     }
 
@@ -78,12 +71,9 @@ public static class ElementCurveExtensions
         Options? options = null)
     {
         var geometry = element.GetGeometryElement(options) ;
-        if (geometry != null)
-        {
-            foreach (var geometryObject in geometry)
-            {
-                if (geometryObject is not Line line)
-                {
+        if (geometry != null) {
+            foreach (var geometryObject in geometry) {
+                if (geometryObject is not Line line) {
                     continue ;
                 }
 
@@ -94,8 +84,7 @@ public static class ElementCurveExtensions
         // Get lines from solids
         foreach (var line in element.GetSolids(options)
                      .GetFaces()
-                     .GetLines())
-        {
+                     .GetLines()) {
             yield return line ;
         }
     }
@@ -114,31 +103,24 @@ public static class ElementCurveExtensions
         foreach (var arc in element.GetSolids(options)
                      .GetFaces()
                      .GetCurves()
-                     .OfType<Arc>())
-        {
+                     .OfType<Arc>()) {
             yield return arc ;
         }
 
         // Get arcs directly from geometry
         var geometryElement = element.GetGeometryElement(options) ;
-        if (geometryElement == null)
-        {
+        if (geometryElement == null) {
             yield break ;
         }
 
-        foreach (var geometryObject in geometryElement)
-        {
-            if (geometryObject is Arc arc)
-            {
+        foreach (var geometryObject in geometryElement) {
+            if (geometryObject is Arc arc) {
                 yield return arc ;
             }
-            else if (geometryObject is GeometryInstance geometryInstance)
-            {
+            else if (geometryObject is GeometryInstance geometryInstance) {
                 var instanceGeometry = geometryInstance.GetInstanceGeometry() ;
-                foreach (var geoObject in instanceGeometry)
-                {
-                    if (geoObject is not Arc instanceArc)
-                    {
+                foreach (var geoObject in instanceGeometry) {
+                    if (geoObject is not Arc instanceArc) {
                         continue ;
                     }
 
@@ -158,24 +140,18 @@ public static class ElementCurveExtensions
         Options? options = null)
     {
         var geometryElement = element.GetGeometryElement(options) ;
-        if (geometryElement == null)
-        {
+        if (geometryElement == null) {
             yield break ;
         }
 
-        foreach (var geometryObject in geometryElement)
-        {
-            if (geometryObject is PolyLine polyLine)
-            {
+        foreach (var geometryObject in geometryElement) {
+            if (geometryObject is PolyLine polyLine) {
                 yield return polyLine ;
             }
-            else if (geometryObject is GeometryInstance geometryInstance)
-            {
+            else if (geometryObject is GeometryInstance geometryInstance) {
                 var instanceGeometry = geometryInstance.GetInstanceGeometry() ;
-                foreach (var geoObject in instanceGeometry)
-                {
-                    if (geoObject is not PolyLine instancePolyLine)
-                    {
+                foreach (var geoObject in instanceGeometry) {
+                    if (geoObject is not PolyLine instancePolyLine) {
                         continue ;
                     }
 

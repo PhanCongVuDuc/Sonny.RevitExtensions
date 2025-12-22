@@ -28,8 +28,7 @@ public static class PlanarFaceExtensions
         var faceIntersectionFaceResult = planarFace1.Intersect(planarFace2,
             out _) ;
 
-        if (faceIntersectionFaceResult == FaceIntersectionFaceResult.Intersecting)
-        {
+        if (faceIntersectionFaceResult == FaceIntersectionFaceResult.Intersecting) {
             return false ;
         }
 
@@ -37,8 +36,7 @@ public static class PlanarFaceExtensions
 
         // Check if two planar faces have the same normal direction
         if (! (planarFace1.FaceNormal.IsAlmostEqualTo(planarFace2.FaceNormal)
-               || planarFace1.FaceNormal.IsAlmostEqualTo(planarFace2.FaceNormal.Negate())))
-        {
+               || planarFace1.FaceNormal.IsAlmostEqualTo(planarFace2.FaceNormal.Negate()))) {
             return false ;
         }
 
@@ -57,15 +55,13 @@ public static class PlanarFaceExtensions
         var faceIntersectionFaceResult = planarFace1.Intersect(planarFace2,
             out _) ;
 
-        if (faceIntersectionFaceResult == FaceIntersectionFaceResult.Intersecting)
-        {
+        if (faceIntersectionFaceResult == FaceIntersectionFaceResult.Intersecting) {
             return false ;
         }
 
         // Check if two planar faces have the same normal direction
         if (! (planarFace1.FaceNormal.IsAlmostEqualTo(planarFace2.FaceNormal)
-               || planarFace1.FaceNormal.IsAlmostEqualTo(planarFace2.FaceNormal.Negate())))
-        {
+               || planarFace1.FaceNormal.IsAlmostEqualTo(planarFace2.FaceNormal.Negate()))) {
             return false ;
         }
 
@@ -84,17 +80,14 @@ public static class PlanarFaceExtensions
     {
         var curveLoop = planarFace.GetEdgesAsCurveLoops()
             .FirstOrDefault() ;
-        if (curveLoop == null)
-        {
+        if (curveLoop == null) {
             yield break ;
         }
 
         var curveLoopIterator = curveLoop.GetCurveLoopIterator() ;
-        while (curveLoopIterator.MoveNext())
-        {
+        while (curveLoopIterator.MoveNext()) {
             var curve = curveLoopIterator.Current ;
-            if (curve is null)
-            {
+            if (curve is null) {
                 continue ;
             }
 
@@ -110,10 +103,8 @@ public static class PlanarFaceExtensions
     public static IEnumerable<PlanarFace> RemoveCoplanarFaces(this IEnumerable<PlanarFace> planarFaces)
     {
         var planarFacesList = planarFaces.ToList() ;
-        if (planarFacesList.Count <= 1)
-        {
-            foreach (var face in planarFacesList)
-            {
+        if (planarFacesList.Count <= 1) {
+            foreach (var face in planarFacesList) {
                 yield return face ;
             }
 
@@ -122,23 +113,19 @@ public static class PlanarFaceExtensions
 
         var uniqueFaces = new List<PlanarFace>() ;
 
-        foreach (var face in planarFacesList)
-        {
+        foreach (var face in planarFacesList) {
             var isCoplanar = false ;
 
-            foreach (var uniqueFace in uniqueFaces)
-            {
+            foreach (var uniqueFace in uniqueFaces) {
                 // Check if faces are coplanar by comparing their planes
                 if (AreFacesCoplanar(face,
-                        uniqueFace))
-                {
+                        uniqueFace)) {
                     isCoplanar = true ;
                     break ;
                 }
             }
 
-            if (! isCoplanar)
-            {
+            if (! isCoplanar) {
                 uniqueFaces.Add(face) ;
                 yield return face ;
             }
@@ -169,8 +156,7 @@ public static class PlanarFaceExtensions
         XYZ origin2)
     {
         // Check if normals are parallel (same direction or opposite)
-        if (! normal1.IsParallel(normal2))
-        {
+        if (! normal1.IsParallel(normal2)) {
             return false ;
         }
 

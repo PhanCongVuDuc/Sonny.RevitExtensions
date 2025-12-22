@@ -11,25 +11,20 @@ public class ParallelXyzEqualityComparer : IEqualityComparer<XYZ>
         XYZ? y)
     {
         if (ReferenceEquals(x,
-                y))
-        {
+                y)) {
             return true ;
         }
 
-        if (x is null)
-        {
+        if (x is null) {
             return false ;
         }
 
-        if (y is null)
-        {
+        if (y is null) {
             return false ;
         }
 
-        if (x.GetType() == y.GetType())
-        {
-            if (x.IsParallel(y))
-            {
+        if (x.GetType() == y.GetType()) {
+            if (x.IsParallel(y)) {
                 return true ;
             }
         }

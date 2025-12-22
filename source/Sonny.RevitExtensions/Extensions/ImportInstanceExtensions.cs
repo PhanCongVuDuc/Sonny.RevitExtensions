@@ -26,26 +26,20 @@ public static class ImportInstanceExtensions
     {
         var option = new Options() ;
         var layerNames = new HashSet<string>() ;
-        foreach (var geoObject in cadInstance.get_Geometry(option))
-        {
-            if (geoObject is not GeometryInstance geometryInstance)
-            {
+        foreach (var geoObject in cadInstance.get_Geometry(option)) {
+            if (geoObject is not GeometryInstance geometryInstance) {
                 continue ;
             }
 
-            foreach (var geometryObject in geometryInstance.GetInstanceGeometry())
-            {
-                if (geometryObject is Solid solid)
-                {
-                    if (! includeSolid)
-                    {
+            foreach (var geometryObject in geometryInstance.GetInstanceGeometry()) {
+                if (geometryObject is Solid solid) {
+                    if (! includeSolid) {
                         continue ;
                     }
 
                     var planarFaces = solid.GetPlanarFaces()
                         .ToList() ;
-                    if (planarFaces.Count == 0)
-                    {
+                    if (planarFaces.Count == 0) {
                         continue ;
                     }
 
@@ -54,11 +48,9 @@ public static class ImportInstanceExtensions
                         .NonNull() ;
                     graphicsStyles.ForEach(x => layerNames.Add(x.GraphicsStyleCategory.Name)) ;
                 }
-                else
-                {
+                else {
                     if (cadInstance.Document.GetElementById<GraphicsStyle>(geometryObject.GraphicsStyleId) is not
-                        { } graphicsStyle)
-                    {
+                        { } graphicsStyle) {
                         continue ;
                     }
 
@@ -83,23 +75,18 @@ public static class ImportInstanceExtensions
     public static IEnumerable<Solid> GetSolids(this ImportInstance cadInstance)
     {
         var option = new Options() ;
-        foreach (var geoObject in cadInstance.get_Geometry(option))
-        {
-            if (geoObject is not GeometryInstance geoInstance)
-            {
+        foreach (var geoObject in cadInstance.get_Geometry(option)) {
+            if (geoObject is not GeometryInstance geoInstance) {
                 continue ;
             }
 
             // Geometry objects can be Arc, Line, PolyLine, Point, or Solid
-            foreach (var geometryObject in geoInstance.GetInstanceGeometry())
-            {
-                if (geometryObject is not Solid solid)
-                {
+            foreach (var geometryObject in geoInstance.GetInstanceGeometry()) {
+                if (geometryObject is not Solid solid) {
                     continue ;
                 }
 
-                if (solid.Faces.Size <= 0)
-                {
+                if (solid.Faces.Size <= 0) {
                     continue ;
                 }
 

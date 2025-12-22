@@ -16,8 +16,7 @@ public static class XYZGeometryExtensions
     {
         var verticesList = polygonVertices.ToList() ;
         var angle = 0.0 ;
-        for (var i = 0; i < verticesList.Count; i++)
-        {
+        for (var i = 0; i < verticesList.Count; i++) {
             var j = i == verticesList.Count - 1 ? 0 : i + 1 ;
             XYZ a = new(verticesList[i].X,
                 verticesList[i].Y,
@@ -58,11 +57,9 @@ public static class XYZGeometryExtensions
     {
         int i, j ;
         var c = false ;
-        for (i = 0, j = nvert - 1; i < nvert; j = i++)
-        {
+        for (i = 0, j = nvert - 1; i < nvert; j = i++) {
             if (verty[i] > testy != verty[j] > testy
-                && testx < (vertx[j] - vertx[i]) * (testy - verty[i]) / (verty[j] - verty[i]) + vertx[i])
-            {
+                && testx < (vertx[j] - vertx[i]) * (testy - verty[i]) / (verty[j] - verty[i]) + vertx[i]) {
                 c = ! c ;
             }
         }
@@ -78,15 +75,13 @@ public static class XYZGeometryExtensions
     public static XYZ GetCentroid(this IEnumerable<XYZ> sources)
     {
         var sourcesList = sources.ToList() ;
-        if (sourcesList.Count == 0)
-        {
+        if (sourcesList.Count == 0) {
             throw new ArgumentException("Collection cannot be empty",
                 nameof( sources )) ;
         }
 
         var centroid = sourcesList[0] ;
-        for (var i = 1; i < sourcesList.Count; i++)
-        {
+        for (var i = 1; i < sourcesList.Count; i++) {
             centroid = centroid.Add(sourcesList[i]) ;
         }
 
@@ -141,8 +136,7 @@ public static class XYZGeometryExtensions
         // Calculate determinants
         var denominator = firstLineDirection.X * secondLineDirection.Y - firstLineDirection.Y * secondLineDirection.X ;
 
-        if (Math.Abs(denominator) < ToleranceConstants.Tolerance1E9)
-        {
+        if (Math.Abs(denominator) < ToleranceConstants.Tolerance1E9) {
             return null ;
         }
 

@@ -15,17 +15,14 @@ public static class DocumentExtension
     public static TElement? GetElementById<TElement>(this Document document,
         string uniqueId) where TElement : Element
     {
-        if (string.IsNullOrEmpty(uniqueId))
-        {
+        if (string.IsNullOrEmpty(uniqueId)) {
             return null ;
         }
 
-        try
-        {
+        try {
             return document.GetElement(uniqueId) as TElement ;
         }
-        catch
-        {
+        catch {
             return null ;
         }
     }
@@ -114,8 +111,7 @@ public static class DocumentExtension
         Type type,
         View? view) where TElement : Element
     {
-        if (! typeof( TElement ).IsAssignableFrom(type))
-        {
+        if (! typeof( TElement ).IsAssignableFrom(type)) {
             throw new ArgumentException($"Type {type.Name} is not assignable to {typeof( TElement ).Name}",
                 nameof( type )) ;
         }
@@ -137,8 +133,7 @@ public static class DocumentExtension
         Type type,
         IEnumerable<ElementId> elementIds) where TElement : Element
     {
-        if (! typeof( TElement ).IsAssignableFrom(type))
-        {
+        if (! typeof( TElement ).IsAssignableFrom(type)) {
             throw new ArgumentException($"Type {type.Name} is not assignable to {typeof( TElement ).Name}",
                 nameof( type )) ;
         }

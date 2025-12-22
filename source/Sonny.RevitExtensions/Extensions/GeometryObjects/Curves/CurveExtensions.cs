@@ -47,8 +47,7 @@ public static class CurveExtensions
             out var results) ;
 
         if (result != SetComparisonResult.Overlap
-            || results is not { Size: 1 })
-        {
+            || results is not { Size: 1 }) {
             return null ;
         }
 
@@ -130,8 +129,7 @@ public static class CurveExtensions
         var modelLine2 = curve2.CreateModelLine(document) ;
 
         if (modelLine1 == null
-            || modelLine2 == null)
-        {
+            || modelLine2 == null) {
             return false ;
         }
 
@@ -156,8 +154,7 @@ public static class CurveExtensions
 
         var angle = direction1.AngleTo(direction2) ;
         if (Math.Abs(angle) < ToleranceConstants.GeneralTolerance
-            || Math.Abs(angle - Math.PI) < ToleranceConstants.GeneralTolerance)
-        {
+            || Math.Abs(angle - Math.PI) < ToleranceConstants.GeneralTolerance) {
             return curve1.Distance(curve2.GetEndPoint(0)) > 0 ;
         }
 
@@ -236,8 +233,7 @@ public static class CurveExtensions
             .AngleTo(curve2.Direction()) ;
 
         if (Math.Abs(angle) < ToleranceConstants.GeneralTolerance
-            || Math.Abs(angle - Math.PI) < ToleranceConstants.GeneralTolerance)
-        {
+            || Math.Abs(angle - Math.PI) < ToleranceConstants.GeneralTolerance) {
             return Math.Abs(Distance(curve1,
                        curve2.GetEndPoint(0)))
                    < ToleranceConstants.GeneralTolerance ;
@@ -323,12 +319,10 @@ public static class CurveExtensions
         Curve? cResult = null ;
         var min = double.MaxValue ;
 
-        foreach (var c in curves)
-        {
+        foreach (var c in curves) {
             var d = GetMinimumDistanceToCurve(curve,
                 c) ;
-            if (! (d < min))
-            {
+            if (! (d < min)) {
                 continue ;
             }
 
@@ -348,8 +342,7 @@ public static class CurveExtensions
     public static bool IsFullyContained(this Curve thisCurve,
         Curve otherCurve)
     {
-        try
-        {
+        try {
             var start = thisCurve.GetEndPoint(0) ;
             var end = thisCurve.GetEndPoint(1) ;
             return ContainsPoint(otherCurve,
@@ -357,8 +350,7 @@ public static class CurveExtensions
                    && ContainsPoint(otherCurve,
                        end) ;
         }
-        catch (Exception)
-        {
+        catch (Exception) {
             return false ;
         }
     }
@@ -372,11 +364,9 @@ public static class CurveExtensions
     public static bool IsFullyContained(this Curve curve,
         IEnumerable<Curve> curves)
     {
-        foreach (var curveTarget in curves)
-        {
+        foreach (var curveTarget in curves) {
             if (! IsFullyContained(curve,
-                    curveTarget))
-            {
+                    curveTarget)) {
                 continue ;
             }
 
@@ -411,8 +401,7 @@ public static class CurveExtensions
         // Walk through each curve (after the first)
         // to match up the curves in order
 
-        for (var i = 0; i < n; ++i)
-        {
+        for (var i = 0; i < n; ++i) {
             var curve = curves[i] ;
             var endPoint = curve.GetEndPoint(1) ;
 
@@ -420,18 +409,15 @@ public static class CurveExtensions
 
             var found = i + 1 >= n ;
 
-            for (var j = i + 1; j < n; ++j)
-            {
+            for (var j = i + 1; j < n; ++j) {
                 var p = curves[j]
                     .GetEndPoint(0) ;
 
                 // If there is a match end->start,
                 // this is the next curve
 
-                if (ToleranceConstants.GeneralTolerance > p.DistanceTo(endPoint))
-                {
-                    if (i + 1 != j)
-                    {
+                if (ToleranceConstants.GeneralTolerance > p.DistanceTo(endPoint)) {
+                    if (i + 1 != j) {
                         (curves[i + 1], curves[j]) = (curves[j], curves[i + 1]) ;
                     }
 
@@ -445,14 +431,11 @@ public static class CurveExtensions
                 // If there is a match end->end,
                 // reverse the next curve
 
-                if (ToleranceConstants.GeneralTolerance > p.DistanceTo(endPoint))
-                {
-                    if (i + 1 == j)
-                    {
+                if (ToleranceConstants.GeneralTolerance > p.DistanceTo(endPoint)) {
+                    if (i + 1 == j) {
                         curves[i + 1] = CreateReversedCurve(curves[j]) ;
                     }
-                    else
-                    {
+                    else {
                         var tmp = curves[i + 1] ;
                         curves[i + 1] = CreateReversedCurve(curves[j]) ;
                         curves[j] = tmp ;
@@ -463,8 +446,7 @@ public static class CurveExtensions
                 }
             }
 
-            if (! found)
-            {
+            if (! found) {
                 throw new Exception("SortCurvesContiguous:" + " non-contiguous input curves") ;
             }
         }
@@ -482,14 +464,12 @@ public static class CurveExtensions
     /// </throws>
     public static Curve CreateReversedCurve(this Curve originalCurve)
     {
-        if (originalCurve is Line)
-        {
+        if (originalCurve is Line) {
             return Line.CreateBound(originalCurve.GetEndPoint(1),
                 originalCurve.GetEndPoint(0)) ;
         }
 
-        if (originalCurve is Arc)
-        {
+        if (originalCurve is Arc) {
             return Arc.Create(originalCurve.GetEndPoint(1),
                 originalCurve.GetEndPoint(0),
                 originalCurve.Evaluate(0.5,
@@ -510,8 +490,7 @@ public static class CurveExtensions
         XYZ startPoint,
         XYZ endPoint)
     {
-        if (startPoint.DistanceTo(endPoint) < ToleranceConstants.GeneralTolerance)
-        {
+        if (startPoint.DistanceTo(endPoint) < ToleranceConstants.GeneralTolerance) {
             return null ;
         }
 
@@ -541,8 +520,7 @@ public static class CurveExtensions
     public static ModelLine? CreateModelLine(this Curve curve,
         Document doc)
     {
-        if (curve.Length < ToleranceConstants.GeneralTolerance)
-        {
+        if (curve.Length < ToleranceConstants.GeneralTolerance) {
             return null ;
         }
 
@@ -551,8 +529,7 @@ public static class CurveExtensions
         var w = dxy > ToleranceConstants.Tolerance1E4 ? XYZ.BasisZ : XYZ.BasisY ;
         var norm = v.CrossProduct(w)
             .Normalize() ;
-        try
-        {
+        try {
             var plane = Plane.CreateByNormalAndOrigin(norm,
                 curve.GetEndPoint(1)) ;
             var sketchPlane = SketchPlane.Create(doc,
@@ -560,8 +537,7 @@ public static class CurveExtensions
             return doc.Create.NewModelCurve(curve,
                 sketchPlane) as ModelLine ;
         }
-        catch (Exception)
-        {
+        catch (Exception) {
             return null ;
         }
     }
@@ -575,15 +551,12 @@ public static class CurveExtensions
     public static IEnumerable<XYZ> GetPointsOnCurve(this Curve curve,
         double distance)
     {
-        if (distance == 0)
-        {
+        if (distance == 0) {
             yield break ;
         }
 
-        if (curve is Line line)
-        {
-            if (line.Length < ToleranceConstants.GeneralTolerance)
-            {
+        if (curve is Line line) {
+            if (line.Length < ToleranceConstants.GeneralTolerance) {
                 yield break ;
             }
 
@@ -594,24 +567,19 @@ public static class CurveExtensions
             var r = Math.Round(line.Length / distance.FromMillimeters(),
                 0) ;
 
-            for (var i = 1; i < r; i++)
-            {
+            for (var i = 1; i < r; i++) {
                 var nextPoint = line.GetEndPoint(0)
                     .Add(direction.Multiply(distance.FromMillimeters() * i)) ;
                 yield return nextPoint ;
             }
         }
-        else if (curve is Arc arc)
-        {
-            foreach (var point in arc.Tessellate())
-            {
+        else if (curve is Arc arc) {
+            foreach (var point in arc.Tessellate()) {
                 yield return point ;
             }
         }
-        else if (curve is NurbSpline spline)
-        {
-            foreach (var point in spline.Tessellate())
-            {
+        else if (curve is NurbSpline spline) {
+            foreach (var point in spline.Tessellate()) {
                 yield return point ;
             }
         }
@@ -627,11 +595,9 @@ public static class CurveExtensions
         var curvesList = curves.ToList() ;
         var result = new List<Curve>() ;
 
-        foreach (var curve in curvesList)
-        {
+        foreach (var curve in curvesList) {
             var allCurveToCheck = curvesList.Except([curve]) ;
-            if (curve.IsFullyContained(allCurveToCheck))
-            {
+            if (curve.IsFullyContained(allCurveToCheck)) {
                 continue ;
             }
 
@@ -651,8 +617,7 @@ public static class CurveExtensions
         var pointsList = points.ToList() ;
         var n = pointsList.Count ;
         CurveLoop curveLoop = new() ;
-        for (var i = 1; i < n; ++i)
-        {
+        for (var i = 1; i < n; ++i) {
             curveLoop.Append(Line.CreateBound(pointsList[i - 1],
                 pointsList[i])) ;
         }
@@ -682,13 +647,11 @@ public static class CurveExtensions
             out var intersectionResultArray) ;
 
         if (setComparisonResult == SetComparisonResult.Disjoint
-            || intersectionResultArray == null)
-        {
+            || intersectionResultArray == null) {
             yield break ;
         }
 
-        for (var i = 0; i < intersectionResultArray.Size; i++)
-        {
+        for (var i = 0; i < intersectionResultArray.Size; i++) {
             var intersectionResult = intersectionResultArray.get_Item(i) ;
             yield return intersectionResult.XYZPoint ;
         }
@@ -766,8 +729,7 @@ public static class CurveExtensions
     public static Curve ProjectToElevation(this Curve curve,
         double elevation)
     {
-        if (curve is Line line)
-        {
+        if (curve is Line line) {
             XYZ strPoint = new(line.GetEndPoint(0)
                     .X,
                 line.GetEndPoint(0)
@@ -778,8 +740,7 @@ public static class CurveExtensions
                 line.GetEndPoint(1)
                     .Y,
                 elevation) ;
-            if (strPoint.DistanceTo(endPoint) < 10.0.FromMillimeters())
-            {
+            if (strPoint.DistanceTo(endPoint) < 10.0.FromMillimeters()) {
                 return curve ;
             }
 
@@ -787,8 +748,7 @@ public static class CurveExtensions
                 endPoint) ;
         }
 
-        if (curve is Arc arc)
-        {
+        if (curve is Arc arc) {
             var xyzes = arc.GetXYZPoints()
                 .ToList() ;
             XYZ end0 = new(xyzes[0].X,
@@ -865,10 +825,8 @@ public static class CurveExtensions
         XYZ origin)
     {
         var curvesList = curves.ToList() ;
-        foreach (var curve in curvesList)
-        {
-            if (! curve.ContainsPoint(origin))
-            {
+        foreach (var curve in curvesList) {
+            if (! curve.ContainsPoint(origin)) {
                 continue ;
             }
 
@@ -888,12 +846,10 @@ public static class CurveExtensions
     public static IEnumerable<Curve> MergeConnectedCurves(this IList<Curve> curves)
     {
         List<Curve> newCurves = [] ;
-        for (var i = 0; i < curves.Count; i++)
-        {
+        for (var i = 0; i < curves.Count; i++) {
             var curve = curves[i] ;
             var curvejoin = curves.FirstOrDefault(c => c.Intersect(curve) == SetComparisonResult.Subset) ;
-            if (curvejoin != null)
-            {
+            if (curvejoin != null) {
                 curve.Intersect(curvejoin,
                     out var resultArray) ;
                 var point1 = resultArray.get_Item(0)
@@ -910,8 +866,7 @@ public static class CurveExtensions
                     point2) ;
                 curves.Remove(curvejoin) ;
             }
-            else
-            {
+            else {
                 newCurves.Add(curve) ;
                 curves.Remove(curve) ;
             }

@@ -19,8 +19,7 @@ public static class GeometryObjectExtensions
         string layer,
         Document document)
     {
-        if (document.GetElement(geometryObject.GraphicsStyleId) is not GraphicsStyle graphicsStyle)
-        {
+        if (document.GetElement(geometryObject.GraphicsStyleId) is not GraphicsStyle graphicsStyle) {
             return false ;
         }
 

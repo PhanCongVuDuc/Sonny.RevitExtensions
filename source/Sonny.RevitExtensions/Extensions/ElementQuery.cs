@@ -58,17 +58,14 @@ internal class ElementQuery<TElement> : IEnumerable<TElement> where TElement : E
 
         // Always apply a filter - Revit requires at least one filter
         if (_runtimeType != null
-            && _runtimeType != typeof( Element ))
-        {
+            && _runtimeType != typeof( Element )) {
             collector = collector.OfClass(_runtimeType) ;
         }
-        else if (typeof( TElement ) != typeof( Element ))
-        {
+        else if (typeof( TElement ) != typeof( Element )) {
             // If TElement is a specific type (not Element), use OfClass
             collector = collector.OfClass(typeof( TElement )) ;
         }
-        else
-        {
+        else {
             // Default filter: get instances (not types)
             collector = collector.WhereElementIsNotElementType() ;
         }
@@ -82,8 +79,7 @@ internal class ElementQuery<TElement> : IEnumerable<TElement> where TElement : E
     private FilteredElementCollector CreateCollector()
     {
         if (_elementIds != null
-            && _elementIds.Length > 0)
-        {
+            && _elementIds.Length > 0) {
             return new FilteredElementCollector(_document,
                 _elementIds) ;
         }

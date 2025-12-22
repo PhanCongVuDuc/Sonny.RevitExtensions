@@ -17,8 +17,7 @@ public static class SolidFaceExtensions
     /// <returns>Collection of faces from the solid</returns>
     public static IEnumerable<Face> GetFaces(this Solid solid)
     {
-        foreach (Face solidFace in solid.Faces)
-        {
+        foreach (Face solidFace in solid.Faces) {
             yield return solidFace ;
         }
     }

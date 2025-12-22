@@ -14,17 +14,14 @@ public static class CylindricalFaceExtensions
     {
         var curveLoop = cylindricalFace.GetEdgesAsCurveLoops()
             .FirstOrDefault() ;
-        if (curveLoop == null)
-        {
+        if (curveLoop == null) {
             return null ;
         }
 
         var curveLoopIterator = curveLoop.GetCurveLoopIterator() ;
-        while (curveLoopIterator.MoveNext())
-        {
+        while (curveLoopIterator.MoveNext()) {
             var curve = curveLoopIterator.Current ;
-            if (curve is not Arc arc)
-            {
+            if (curve is not Arc arc) {
                 continue ;
             }
 

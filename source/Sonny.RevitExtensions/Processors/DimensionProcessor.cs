@@ -49,15 +49,13 @@ public class DimensionProcessor
     public Dimension? Process()
     {
         // Handle simple dimension with no segments
-        if (IsSimpleDimensionWithZeroValue())
-        {
+        if (IsSimpleDimensionWithZeroValue()) {
             _document.Delete(_dimension.Id) ;
             return null ;
         }
 
         // Check if any segments have zero or near-zero values
-        if (! HasZeroValueSegments())
-        {
+        if (! HasZeroValueSegments()) {
             return _dimension ;
         }
 
@@ -79,11 +77,9 @@ public class DimensionProcessor
     /// </summary>
     private bool HasZeroValueSegments()
     {
-        foreach (DimensionSegment segment in _segments)
-        {
+        foreach (DimensionSegment segment in _segments) {
             if (segment.Value != null
-                && Math.Abs((double)segment.Value) < ToleranceConstants.Tolerance1E4)
-            {
+                && Math.Abs((double)segment.Value) < ToleranceConstants.Tolerance1E4) {
                 return true ;
             }
         }
@@ -99,8 +95,7 @@ public class DimensionProcessor
         var validReferences = FilterValidReferences() ;
 
         // Add the last reference if the last segment is valid
-        if (ShouldIncludeLastReference())
-        {
+        if (ShouldIncludeLastReference()) {
             validReferences.Add(_references.get_Item(_references.Size - 1)) ;
         }
 
@@ -119,17 +114,14 @@ public class DimensionProcessor
         var validReferences = new List<Reference>() ;
 
         // Always add the first reference
-        if (_references.Size > 0)
-        {
+        if (_references.Size > 0) {
             validReferences.Add(_references.get_Item(0)) ;
         }
 
         // Add references for segments that meet the minimum value requirement
-        for (var i = 0; i < _segments.Size; i++)
-        {
+        for (var i = 0; i < _segments.Size; i++) {
             var segment = _segments.get_Item(i) ;
-            if (segment.Value >= _minimumValue)
-            {
+            if (segment.Value >= _minimumValue) {
                 validReferences.Add(_references.get_Item(i + 1)) ;
             }
         }
@@ -142,8 +134,7 @@ public class DimensionProcessor
     /// </summary>
     private bool ShouldIncludeLastReference()
     {
-        if (_segments.Size == 0)
-        {
+        if (_segments.Size == 0) {
             return false ;
         }
 
@@ -156,8 +147,7 @@ public class DimensionProcessor
     /// </summary>
     private Dimension? CreateNewDimension(List<Reference> validReferences)
     {
-        if (validReferences.Count < 2)
-        {
+        if (validReferences.Count < 2) {
             return null ;
         }
 

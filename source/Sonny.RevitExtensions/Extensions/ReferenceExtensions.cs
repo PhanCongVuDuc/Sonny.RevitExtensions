@@ -9,12 +9,10 @@ public static class ReferenceExtensions
     {
         bool result ;
         if (! referenceArray.IsEmpty
-            && referenceArray.Size >= 2)
-        {
+            && referenceArray.Size >= 2) {
             result = true ;
         }
-        else
-        {
+        else {
             result = false ;
         }
 

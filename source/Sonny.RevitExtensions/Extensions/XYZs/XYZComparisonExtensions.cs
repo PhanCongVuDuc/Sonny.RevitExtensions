@@ -55,8 +55,7 @@ public static class XYZComparisonExtensions
         const double tolerance = ToleranceConstants.CoarseTolerance ;
 
         // Check if testDirection is valid
-        if (direction.GetLength() < ToleranceConstants.Tolerance1E9)
-        {
+        if (direction.GetLength() < ToleranceConstants.Tolerance1E9) {
             return false ;
         }
 
@@ -64,8 +63,7 @@ public static class XYZComparisonExtensions
         var vector = lineEndPoint - lineStartPoint ;
 
         // If lineEndPoint == lineStartPoint, it's on the line
-        if (vector.GetLength() < tolerance)
-        {
+        if (vector.GetLength() < tolerance) {
             return true ;
         }
 

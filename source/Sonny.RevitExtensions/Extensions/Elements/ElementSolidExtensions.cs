@@ -20,28 +20,21 @@ public static class ElementSolidExtensions
         Options? options = null)
     {
         var geometry = element.GetGeometryElement(options) ;
-        if (geometry is null)
-        {
+        if (geometry is null) {
             yield break ;
         }
 
-        foreach (var geometryObject in geometry)
-        {
-            if (geometryObject is Solid item)
-            {
-                if (item.Volume > ToleranceConstants.Tolerance1E9)
-                {
+        foreach (var geometryObject in geometry) {
+            if (geometryObject is Solid item) {
+                if (item.Volume > ToleranceConstants.Tolerance1E9) {
                     yield return item ;
                 }
             }
-            else if (geometryObject is GeometryInstance geometryInstance)
-            {
+            else if (geometryObject is GeometryInstance geometryInstance) {
                 var geometryElement = geometryInstance.GetInstanceGeometry() ;
-                foreach (var o in geometryElement)
-                {
+                foreach (var o in geometryElement) {
                     if (o is Solid solid
-                        && solid.Volume > ToleranceConstants.Tolerance1E9)
-                    {
+                        && solid.Volume > ToleranceConstants.Tolerance1E9) {
                         yield return solid ;
                     }
                 }

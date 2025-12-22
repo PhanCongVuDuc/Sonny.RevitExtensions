@@ -39,10 +39,8 @@ public static class FaceCurveExtensions
     public static IEnumerable<Curve> GetCurves(this Face face)
     {
         var edgeArrayArray = face.EdgeLoops ;
-        foreach (EdgeArray edgeArray in edgeArrayArray)
-        {
-            foreach (Edge edge in edgeArray)
-            {
+        foreach (EdgeArray edgeArray in edgeArrayArray) {
+            foreach (Edge edge in edgeArray) {
                 yield return edge.AsCurve() ;
             }
         }
@@ -72,10 +70,8 @@ public static class FaceCurveExtensions
     public static IEnumerable<Edge> GetEdges(this Face face)
     {
         var edgeArrayArray = face.EdgeLoops ;
-        foreach (EdgeArray edgeArray in edgeArrayArray)
-        {
-            foreach (Edge edge in edgeArray)
-            {
+        foreach (EdgeArray edgeArray in edgeArrayArray) {
+            foreach (Edge edge in edgeArray) {
                 yield return edge ;
             }
         }
@@ -98,13 +94,10 @@ public static class FaceCurveExtensions
         XYZ direction)
     {
         var listEdges = face.GetEdges() ;
-        foreach (var listEdge in listEdges)
-        {
+        foreach (var listEdge in listEdges) {
             var curve = listEdge.AsCurve() ;
-            if (curve is Line line)
-            {
-                if (line.Direction.IsAlmostEqualTo(direction))
-                {
+            if (curve is Line line) {
+                if (line.Direction.IsAlmostEqualTo(direction)) {
                     return listEdge ;
                 }
             }
